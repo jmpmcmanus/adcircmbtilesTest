@@ -226,11 +226,11 @@ def deleteRaw(inputFile, outputDir):
     os.remove(outputDir+'/'+tiffraw+'.aux.xml')
 
 def main(args):
-    logger.add('../logs/logs.log', level='INFO')
     inputFile = args.inputFile
     outputDir = args.outputDir
 
     dirPath = "/".join(outputDir.split('/')[0:-1])+'/'
+    logger.add(dirPath+'logs/logs.log', level='INFO')
 
     makeDIRS(outputDir.strip())
 
