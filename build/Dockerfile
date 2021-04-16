@@ -45,14 +45,14 @@ RUN mkdir /repos
 WORKDIR /repos
 
 # get the repos
-RUN git clone https://github.com/jmpmcmanus/adcircmbtiles.git &&\
+RUN git clone https://github.com/jmpmcmanus/adcircmbtilesTest.git &&\
     git clone https://github.com/pchynoweth/gdal2mbtiles.git
 
 # change to the run directory                        
-WORKDIR /repos/adcircmbtiles/run
+WORKDIR /repos/adcircmbtilesTest/run
 
 # set the python path
-ENV PYTHONPATH=/repos/adcircmbtiles
+ENV PYTHONPATH=/repos/adcircmbtilesTest
 
 ENTRYPOINT ["conda", "run", "--no-capture-output", "-n", "adcircmbtiles"]
 
