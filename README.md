@@ -8,7 +8,7 @@ Converts ADCIRC mesh data, in a NetCDF file to a MapBox tiles (mbtiles) file.
 ## Test Run
   To run in test mode first edit the Docker file removing the commenting out of the ENTRYPOINT and CMD:
 
-      ENTRYPOINT ["conda", "run", "--no-capture-output", "-n", "adcircmbtiles"] 
+      ENTRYPOINT ["conda", "run", "-n", "adcircmbtiles"] 
 
       CMD ["python", "adcirc2geotiff.py", "--inputFile", "maxele.63.nc", "--outputDir", "/data/sj37392jdj28538/tiff"]
 

@@ -54,6 +54,6 @@ WORKDIR /repos/adcircmbtilesTest/run
 # set the python path
 ENV PYTHONPATH=/repos/adcircmbtilesTest
 
-ENTRYPOINT ["conda", "run", "--no-capture-output", "-n", "adcircmbtiles"]
+ENTRYPOINT ["conda", "run", "-n", "adcircmbtiles"]
 
 CMD ["python", "adcirc2geotiff.py", "--inputFile", "maxele.63.nc", "--outputDir", "/data/sj37392jdj28538/tiff"]
