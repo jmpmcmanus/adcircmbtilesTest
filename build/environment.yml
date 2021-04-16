@@ -1,0 +1,11 @@
+name: adcircmbtiles
+channels:
+  - conda-forge
+dependencies:
+  - python=3.7
+  - qgis=3.16.3
+  - pillow=7.2.0
+  - pip
+  - pip:
+      - loguru 
+
