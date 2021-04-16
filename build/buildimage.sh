@@ -1,2 +1,2 @@
 #!/bin/bash
-docker build -t adcircmbtiles:test .
+docker build -t adcircmbtiles:latest .

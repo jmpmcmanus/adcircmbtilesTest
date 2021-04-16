@@ -1,10 +1,10 @@
 ##############
 # Docker file for the creation of the adcirc geotiffs and mbtiles files.
 #
-# to create image: docker build -t adcircmbtiles:test .
+# to create image: docker build -t adcircmbtiles:latest .
 # to push image:
-#       docker tag adcircmbtiles:test jmpmcmanus/adcircmbtiles:test
-#       docker push jmpmcmanus/adcircmbtiles:test
+#       docker tag adcircmbtiles:latest jmpmcmanus/adcircmbtiles:latest
+#       docker push jmpmcmanus/adcircmbtiles:latest
 ##############
 # need at least 103 GB to process to tiffs. This includes 102 GB for the tiffs, and 1 GB for the netCDF files.
 # need an additional 2 GB for the mbtiles files, for a total of 105 GB. Round off to 110 GB for good luck.
