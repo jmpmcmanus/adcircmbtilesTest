@@ -27,6 +27,9 @@ def geotiff2mbtiles(inputFile, zlstart, zlstop, cpu, outputDir):
     outputFile = ".".join(inputFile.split('.')[0:2])+'.'+zlstart+'.'+zlstop+'.mbtiles'
     mbtiles = outputDir+'/'+outputFile
 
+    if not os.path.exists(mbtiles):
+        os.remove(mbtiles)
+
     cmds_list = [
       ['python', gdal2mbtiles_cmd, tiff, '-z', zl, '--processes='+cpu, mbtiles]
     ]
@@ -37,6 +40,7 @@ def geotiff2mbtiles(inputFile, zlstart, zlstop, cpu, outputDir):
     for proc in procs_list:
         proc.wait()
 
+@logger.catch
 def main(args):
     inputFile = args.inputFile 
     zlstart = args.zlstart

@@ -230,6 +230,7 @@ def deleteRaw(inputFile, outputDir):
     os.remove(outputDir+'/'+tiffraw)
     os.remove(outputDir+'/'+tiffraw+'.aux.xml')
 
+@logger.catch
 def main(args):
     inputFile = args.inputFile
     outputDir = args.outputDir
