@@ -56,9 +56,9 @@ def makeDIRS(outputDir):
     if not os.path.exists(outputDir):
         mode = 0o755
         os.makedirs(outputDir, mode)
-        logger.info('Made directory.')
+        logger.info('Made directory '+outputDir.split('/')[-1]+ '.')
     else:
-        logger.info('Directory already made.')
+        logger.info('Directory '+outputDir.split('/')[-1]+' already made.')
 
 def getParameters(dirPath, inputFile, outputDir):
     tiffile = inputFile.split('.')[0]+'.raw.'+inputFile.split('.')[1]+'.tif'
@@ -108,6 +108,8 @@ def exportRaster(parameters):
         rdp.writeBlock(block, 1)
         rdp.setNoDataValue(1, block.noDataValue())
         rdp.setEditable(False)
+
+        logger.info('Regridded mesh data in '+meshfile.split('"')[0]+' to float64 grid, and saved to tiff ('+output_layer.split('/')[-1]+') file.')
 
         return(output_layer)
 
@@ -217,6 +219,9 @@ def styleRaster(filename):
             crs,
             transform_context
         )
+
+        logger.info('Conveted data in '+rasterfile+' from float64 to 8bit, added color palette and saved to tiff ('+outfile.split('/')[-1]+') file')
+
     if not rlayer.isValid():
         raise Exception('Invalid raster')
 
@@ -230,7 +235,9 @@ def main(args):
     outputDir = args.outputDir
 
     dirPath = "/".join(outputDir.split('/')[0:-1])+'/'
-    logger.add(dirPath+'logs/logs.log', level='INFO')
+
+    logger.remove()
+    logger.add(dirPath+'logs/adcirc2geotiff-logs.log', level='DEBUG')
 
     makeDIRS(outputDir.strip())
 
@@ -246,13 +253,10 @@ def main(args):
     logger.info('Initialzed QGIS.')
 
     parameters = getParameters(dirPath, inputFile.strip(), outputDir.strip())
-    logger.info('Got mesh regrid paramters.')
+    logger.info('Got mesh regrid paramters for '+inputFile.strip())
 
     filename = exportRaster(parameters)
-    logger.info('Regridded mesh data to float64 grid, and saved to tiff file.')
-
     styleRaster(filename)
-    logger.info('Conveted data from float64 tiff to 8bit, added color palette and saved to tiff file')
 
     app.exitQgis()
     logger.info('Quit QGIS')
