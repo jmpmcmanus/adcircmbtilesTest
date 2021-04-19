@@ -25,7 +25,7 @@ LABEL description="adcircmbtiles image with Dockerfile."
 
 # update sources list, and install basic apps, one per line for better caching
 RUN apt-get clean && apt-get update &&\
-    apt-get install -qy nano \
+    apt-get install -qy vim \
     libgl1 \
     libgl1-mesa-dev \
     aria2

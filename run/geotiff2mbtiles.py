@@ -36,7 +36,7 @@ def geotiff2mbtiles(inputFile, zlstart, zlstop, cpu, outputDir):
     ]
     procs_list = [Popen(cmd, stdout=PIPE, stderr=PIPE) for cmd in cmds_list]
 
-    logger.info('Created mbtiles file '+outputFile+' from tiff file '+inputFile+'.')
+    logger.info('Creating mbtiles file '+outputFile+' from tiff file '+inputFile+'.')
 
     for proc in procs_list:
         proc.wait()
