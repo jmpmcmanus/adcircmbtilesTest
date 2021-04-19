@@ -27,9 +27,12 @@ def geotiff2mbtiles(inputFile, zlstart, zlstop, cpu, outputDir):
     outputFile = ".".join(inputFile.split('.')[0:2])+'.'+zlstart+'.'+zlstop+'.mbtiles'
     mbtiles = outputDir+'/'+outputFile
 
-    logger.info('Mbtiles path '+mbtiles+'.')
-    #if not os.path.exists(mbtiles):
-    #    os.remove(mbtiles)
+    if os.path.exists(mbtiles):
+        os.remove(mbtiles)
+        logger.info('Removed old mbtiles file '+mbtiles+'.')
+        logger.info('Mbtiles path '+mbtiles+'.')
+    else:
+        logger.info('Mbtiles path '+mbtiles+'.')
 
     cmds_list = [
       ['python', gdal2mbtiles_cmd, tiff, '-z', zl, '--processes='+cpu, mbtiles]
@@ -55,6 +58,7 @@ def main(args):
     logger.info('Create mbtiles file, with zoom levels '+zlstart+' to '+zlstop+', from '+inputFile.strip()+' tiff file '+inputFile+' using '+cpu+' CPUs.')
 
     geotiff2mbtiles(inputFile, zlstart, zlstop, cpu, outputDir)
+    logger.info('Created mbtiles file.')
 
 if __name__ == "__main__":
     """ This is executed when run from the command line """
