@@ -58,7 +58,7 @@ def main(args):
     logger.info('Create mbtiles file, with zoom levels '+zlstart+' to '+zlstop+', from '+inputFile.strip()+' tiff file '+inputFile+' using '+cpu+' CPUs.')
 
     geotiff2mbtiles(inputFile, zlstart, zlstop, cpu, outputDir)
-    logger.info('Created mbtiles file.')
+    logger.info('Created mbtiles file from '+inputFile+' TIFF file.')
 
 if __name__ == "__main__":
     """ This is executed when run from the command line """
