@@ -238,7 +238,8 @@ def main(args):
     dirPath = "/".join(outputDir.split('/')[0:-1])+'/'
 
     logger.remove()
-    logger.add(dirPath+'logs/adcirc2geotiff-logs.log', level='DEBUG')
+    log_path = os.getenv('LOG_PATH', os.path.join(os.path.dirname(__file__), 'logs'))
+    logger.add(log_path+'/adcirc2geotiff-logs.log', level='DEBUG')
 
     makeDIRS(outputDir.strip())
 
