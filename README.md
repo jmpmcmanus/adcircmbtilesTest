@@ -26,7 +26,7 @@ Converts ADCIRC mesh data, in a NetCDF file to a MapBox tiles (mbtiles) file.
 
   After producing a tiff image, you can create a mbtiles file by running the following command:
 
-    docker run --volume /directory/path/to/storage:/data/sj37392jdj28538 adcircmbtiles python geotiff2mbtiles.py --inputFile maxwvel.63.tif --zlstart 0 --zlstop 9 --cpu 6 --outputDir /data/sj37392jdj28538/mbtiles 
+    docker run --volume /directory/path/to/storage:/data/sj37392jdj28538 adcircmbtiles python geotiff2mbtiles.py --inputFile maxwvel.63.tif --zlstart 0 --zlstop 9 --cpu 6 --outputDir /data/sj37392jdj28538/mbtiles --finalDIR /data/sj37392jdj28538/final
 
    These methods will create exited containers, which you will need to remove after using. Below is an explanation of how to create a stand alone container, and run the commands above inside the container.
 
@@ -50,7 +50,7 @@ Converts ADCIRC mesh data, in a NetCDF file to a MapBox tiles (mbtiles) file.
 
   and the command to create the mbtiles file:
 
-    python geotiff2mbtiles.py --inputFile maxwvel.63.tif --zlstart 0 --zlstop 9 --cpu 6 --outputDir /data/sj37392jdj28538/mbtiles
+    python geotiff2mbtiles.py --inputFile maxwvel.63.tif --zlstart 0 --zlstop 9 --cpu 6 --outputDir /data/sj37392jdj28538/mbtiles --finalDIR /data/sj37392jdj28538/final
 
 ## Running in Kubernetes
 
@@ -60,7 +60,7 @@ When running the container in Kubernetes the command line for adcirc2geotiff.py 
 
 And to run geotiff2mbtiles.py the command line would be:
 
-    conda run -n adcircmbtiles python geotiff2mbtiles.py --inputFile maxwvel.63.tif --zlstart 0 --zlstop 9 --cpu 6 --outputDir /xxxx/xxxxxxxxxx/mbtiles
+    conda run -n adcircmbtiles python geotiff2mbtiles.py --inputFile maxwvel.63.tif --zlstart 0 --zlstop 9 --cpu 6 --outputDir /xxxx/xxxxxxxxxx/mbtiles --finalDIR /xxxx/xxxxxxxxxx/final
 
 Where /xxxx/xxxxxxxxxx would be a specified directory path.
  
