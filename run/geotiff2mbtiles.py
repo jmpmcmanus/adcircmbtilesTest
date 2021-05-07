@@ -61,6 +61,7 @@ def main(args):
     zlstop = args.zlstop
     cpu = args.cpu
     outputDir = args.outputDir
+    finalDIR = args.finalDIR
     dirPath = "/".join(outputDir.split('/')[0:-1])+'/'
 
     logger.remove()
@@ -68,7 +69,7 @@ def main(args):
     logger.add(log_path+'/geotiff2mbtiles-logs.log', level='DEBUG')
     logger.info('Create mbtiles file, with zoom levels '+zlstart+' to '+zlstop+', from '+inputFile.strip()+' tiff file '+inputFile+' using '+cpu+' CPUs.')
 
-    geotiff2mbtiles(inputFile, zlstart, zlstop, cpu, outputDir)
+    geotiff2mbtiles(inputFile, zlstart, zlstop, cpu, outputDir, finalDIR)
 
 if __name__ == "__main__":
     """ This is executed when run from the command line """
