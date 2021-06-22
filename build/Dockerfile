@@ -56,4 +56,4 @@ ENV PYTHONPATH=/repos/adcircmbtilesTest
 
 ENTRYPOINT ["conda", "run", "-n", "adcircmbtiles"]
 
-CMD ["python", "adcirc2geotiff.py", "--inputFile", "maxele.63.nc", "--outputDir", "/data/sj37392jdj28538/tiff", "--finalDIR", "/data/sj37392jdj28538/final/mbtiles"]
+CMD ["python", "adcirc2geotiff.py", "--inputFile", "maxele.63.nc", "--outputDir", "/data/sj37392jdj28538/tiff", "--finalDIR", "/data/sj37392jdj28538/final/tiff"]
